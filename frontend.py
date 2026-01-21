@@ -4,7 +4,7 @@ import torch
 from torchvision import transforms
 from model import CNN, predict
 
-def load_model(path= 'CNN_model.pth'):
+def load_model(path= 'CNN_Model.pth'):
     model = CNN()
     load_model = torch.load(path,map_location=torch.device('cpu'))
 
@@ -28,16 +28,16 @@ st.write("this gubrish time jnr")
 
 
 
-file = st.file_uploader("upload Image",type=['jpg','jpeg','png'])
+file = st.file_uploader("upload Image",type=['jpg','jpeg','png'])  # image uploader --> file
 if file is not None:
-    img = Image.open(file)
-    st.image(img, caption="actual Image", width='stretch')
+    img = Image.open(file)       # image open
+    st.image(img, caption="actual Image")   # image show
     
-    if st.button("Predict"):
-        label, confidence, all_probs = predict(img)
+    if st.button("Predict"):     
+        label, confidence, all_probs = predict(img)     # actual classs of an image
 
-        st.success(f"Prediction: **{label}**")
-        st.info(f"Confidence: **{confidence*100:.2f}%**")
+        st.success(f"Prediction: **{label}**")           
+        st.info(f"Confidence: **{confidence*100:.2f}%**")    # probabilty
 
         # Show all class probabilities
         st.subheader("Class Probabilities")
