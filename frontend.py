@@ -40,5 +40,7 @@ if file is not None:
         st.info(f"Confidence: **{confidence*100:.2f}%**")
 
         # Show all class probabilities
-        
+        st.subheader("Class Probabilities")
+        for i, cls in enumerate(classes):
+            st.write(f"{cls}: {(all_probs[0][i].detach().cpu().item() * 100):.2f}")
         
